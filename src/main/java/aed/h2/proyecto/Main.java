@@ -7,11 +7,11 @@ public class Main {
 		try {
 			Coneccion conexion =new Coneccion();
 			conexion.probar();
+			//conexion.inser();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
-
 }
