@@ -35,7 +35,7 @@ Scanner sc=new Scanner(System.in);
 			
 			rst=st.executeQuery("SELECT * FROM CINE.SALA");
 			while(rst.next()) {
-				System.out.println("ID: "+rst.getInt("ID")+"\t"+"IdPelicula: "+rst.getInt("IDPelicula")+"\t"+"Hora: "+rst.getDate("Hora")
+				System.out.println("ID: "+rst.getInt("ID")+"\t"+"IdPelicula: "+rst.getInt("IDPelicula")+"\t"+"Hora: "+rst.getString("Hora")
 				+"\t"+"3D:"+rst.getBoolean("TRESD")+ " 3D");
 			}
 		} catch (SQLException e) {
@@ -46,7 +46,7 @@ Scanner sc=new Scanner(System.in);
 	void inser() {
 		try {
 			//rst=st.prepare(,5);
-			PreparedStatement a= conect.prepareStatement("INSERT INTO CINE.SALAS (IDPelicula, Hora, TESD)VALUES('1','17-30-30','1');");
+			PreparedStatement a= conect.prepareStatement("INSERT INTO CINE.SALA (IDPelicula, Hora, TRESD)VALUES('2','20:20:20','0');");
 			a.executeUpdate();
 			System.out.println("se insertó");
 		} catch (SQLException e) {
@@ -59,18 +59,18 @@ Scanner sc=new Scanner(System.in);
 		probar();
 		System.out.println("Id a modificar");
 		int a=sc.nextInt();
-		System.out.println("Titulo a modificar");
+		System.out.println("IdPelicula a modificar");
 		int b=sc.nextInt();
-		System.out.println("Genero a modificar");
-		//Date c=sc.nextInt();
-		System.out.println("Rangoedad a modificar");
-		boolean d=sc.nextBoolean();
+		System.out.println("Hora a modificar");
+		String c=sc.nextLine();
+		System.out.println("3D a modificar");
+		String d=sc.nextLine();
 
 		try {
 			//rst=st.prepare(,5);
 			
 			PreparedStatement ax= conect.prepareStatement("UPDATE CINE.PELICULAS SET IDPelicula=?, Hora=?, TRESD=? where ID="+a);
-			ax.setString(1, b);
+			ax.setInt(1, b);
 			ax.setString(2, c);
 			ax.setString(3, d);
 
@@ -96,7 +96,7 @@ Scanner sc=new Scanner(System.in);
 		String a=sc.nextLine();
 		try {
 			
-			PreparedStatement ax= conect.prepareStatement("DELETE FROM CINE.PELICULAS Where ID=?");
+			PreparedStatement ax= conect.prepareStatement("DELETE FROM CINE.SALA Where ID=?");
 			ax.setString(1, a);
 			ax.executeUpdate();
 			System.out.println("se borro");
