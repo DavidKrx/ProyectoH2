@@ -13,11 +13,7 @@ public class Main {
 			menuInicial();
 		}if(salirInicio == true) {
 		}	}
-		
-		
-			
 	
-			
 	private static void menuInicial() {
 		H2 base = null;
 		
